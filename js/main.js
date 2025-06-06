@@ -113,7 +113,7 @@ function themNhanVienTuForm() {
   const chucVu = getEle("chucvu").value;
   const gioLam = getEle("gioLam").value.trim();
 
-  // 3.1) Kiểm tra xem tài khoản có trùng không?  // === MỚI ===
+  // 3.1) Kiểm tra xem tài khoản có trùng  //
   if (danhSachNhanVien.some((nv) => nv.taiKhoan === taiKhoan)) {
     // Nếu trùng, hiển thị thông báo ngay dưới input hoặc alert
     getEle("tbTKNV").innerHTML = "(*) Tài khoản đã tồn tại";
@@ -151,7 +151,7 @@ function themNhanVienTuForm() {
   setLocalStorage();
   hienThiDanhSachNhanVien();
 
-  // Sau khi thêm xong, reset form (nếu muốn tự tắt modal, bạn có thể gọi $("#myModal").modal("hide"))
+  // Sau khi thêm xong, reset form
   resetForm();
 }
 
@@ -241,14 +241,14 @@ function hienThiDanhSachNhanVien() {
   getEle("tableDanhSach").innerHTML = content;
 }
 
-// 7) Hàm xóa nhân viên
+// 7) xóa nhân viên
 function xoaNhanVien(taiKhoan) {
   danhSachNhanVien = danhSachNhanVien.filter((nv) => nv.taiKhoan !== taiKhoan);
   setLocalStorage();
   hienThiDanhSachNhanVien();
 }
 
-// 8) Hàm sửa nhân viên: điền giá trị cũ vào form, mở modal, chỉnh trạng thái nút
+// 8) sửa nhân viên: điền giá trị cũ vào form, mở modal, chỉnh trạng thái nút
 function suaNhanVien(taiKhoan) {
   const nv = danhSachNhanVien.find((item) => item.taiKhoan === taiKhoan);
   if (!nv) return;
@@ -302,7 +302,7 @@ function getLocalStorage() {
 }
 
 // -------------------------------------------------------
-// 10) CHỨC NĂNG TÌM KIẾM (kết hợp tìm theo xếp loại và tìm theo tên, không phân biệt dấu/không dấu, hoa/thường)
+// 10) CHỨC NĂNG TÌM KIẾM 
 function timKiemNhanVien() {
   // Lấy từ khóa
   let tuKhoa = getEle("searchName").value.trim();
